@@ -1,0 +1,100 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    image: ai-rec-engine-web:latest
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    env_file:
+      - .env.example
+    environment:
+      - APP_ENV=production
+      - PROMETHEUS_MULTIPROC_DIR=/tmp/prometheus
+    volumes:
+      - ./:/app
+    command: ["bash", "-lc", "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"]
+    ports:
+      - "8000:8000"
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    image: ai-rec-engine-worker:latest
+    depends_on:
+      - redis
+      - postgres
+    env_file:
+      - .env.example
+    volumes:
+      - ./:/app
+    command: ["bash", "-lc", "celery -A app.tasks.celery_app worker --loglevel=info"]
+
+  scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    image: ai-rec-engine-scheduler:latest
+    depends_on:
+      - redis
+      - postgres
+    env_file:
+      - .env.example
+    volumes:
+      - ./:/app
+    command: ["bash", "-lc", "celery -A app.tasks.celery_app beat --loglevel=info"]
+
+  postgres:
+    image: postgres:15.6
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: ai_recs
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "app"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7.2
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  prometheus:
+    image: prom/prometheus:v2.51.0
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana:10.4.2
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+
+volumes:
+  postgres_data:
+  redis_data:
+  grafana_data:

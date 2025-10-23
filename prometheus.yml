@@ -1,0 +1,14 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "app"
+    static_configs:
+      - targets: ["web:8000"]
+        labels:
+          group: "app"
+  - job_name: "celery"
+    static_configs:
+      - targets: ["worker:8080"]
+        labels:
+          group: "celery"
