@@ -1,0 +1,11 @@
+sku,title,description,categories,tags,brand,color,price,inventory_count
+SKU-EXT-001,Aurora Noise-Cancelling Headphones,"Premium over-ear headphones with adaptive noise cancellation and 40-hour battery life.","electronics|music|travel","wireless|noise-cancelling|premium|bluetooth|long-battery",Aurora Labs,black,299.99,150
+SKU-HME-014,Nimbus Smart Air Purifier,"HEPA-certified purifier with real-time air quality monitoring and voice assistant integration.","home|wellness|electronics","smart|energy-efficient|compact|quiet|wifi",Nimbus Co.,white,189.00,80
+SKU-FIT-023,Pulse Performance Smartwatch,"Multi-sport GPS watch with cardiac insights, sleep tracking, and adaptive coaching.","fitness|electronics|outdoors","waterproof|bluetooth|wearable|fitness|premium",Pulse,silver,249.50,120
+SKU-GME-031,Vertex Pro Gaming Keyboard,"High-response mechanical keyboard with per-key RGB and hot-swap switches.","gaming|electronics|accessories","mechanical|rgb|usb-c|programmable|durable",Vertex,black,159.95,200
+SKU-HME-045,Atlas Artisan Pour-Over Set,"Hand-crafted coffee kit featuring double-wall glass carafe and precision filters.","home|kitchen|lifestyle","sustainable|glass|barista|heat-resistant|gift",Atlas Home,amber,89.90,60
+SKU-OUT-052,Trekker All-Weather Jacket,"Lightweight, breathable shell with seam-sealed protection and thermal-regulating mesh.","outdoors|fashion|travel","waterproof|windproof|packable|breathable|eco",Northline,forest,179.00,140
+SKU-BKS-063,Lumina Mindfulness Journal,"Guided journal with daily prompts, mood tracker, and QR-linked meditation library.","books|wellness|lifestyle","guided|reflective|gift|eco|mindfulness",Lumina Studio,navy,34.00,300
+SKU-ELC-078,Helio Solar Power Bank,"Fast-charging portable battery with dual USB-C ports and foldable solar panels.","electronics|travel|outdoors","solar|fast-charge|compact|rugged|usb-c",Helio Labs,midnight,129.00,90
+SKU-HOM-089,Serenity Weighted Blanket,"Cooling weighted blanket with glass microbeads and removable washable cover.","home|wellness|sleep","cooling|washable|premium|anti-anxiety|breathable",Serenity,slate,149.00,110
+SKU-BTY-097,Glowform Vitamin C Serum,"Potent antioxidant serum with encapsulated vitamin C and hyaluronic acid.","beauty|wellness|skincare","brightening|vegan|cruelty-free|fragrance-free|glass-dropper",Glowform,clear,58.00,210
