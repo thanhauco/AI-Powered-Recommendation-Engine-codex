@@ -85,7 +85,10 @@ async def change_password(
     if not verify_password(payload.current_password, current_user.hashed_password):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Incorrect current password")
     service = AuthService(session)
-    await service.change_password(current_user, new_password=payload.new_password)
+    db_user = await session.get(User, current_user.id)
+    if db_user is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+    await service.change_password(db_user, new_password=payload.new_password)
     await session.commit()
-    access, refresh = await service.issue_tokens(current_user)
+    access, refresh = await service.issue_tokens(db_user)
     return TokenResponse(access_token=access, refresh_token=refresh)

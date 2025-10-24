@@ -11,7 +11,7 @@ from .feature_store import (
 )
 from .interaction import InteractionCreate, InteractionRead, InteractionType
 from .item import ItemCreate, ItemRead, ItemSearchFilters, ItemUpdate
-from .user import UserCreate, UserRead, UserRole, UserUpdate
+from .user import UserCreate, UserRead, UserRole, UserUpdate, UsersPage
 
 __all__ = [
     "ABTestAssignmentRead",
@@ -37,4 +37,5 @@ __all__ = [
     "UserRead",
     "UserRole",
     "UserUpdate",
+    "UsersPage",
 ]

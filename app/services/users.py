@@ -20,7 +20,8 @@ class UserService:
 
     async def list_users(self, *, limit: int = 50, offset: int = 0) -> tuple[list[User], int]:
         query = select(User).order_by(User.created_at.desc()).limit(limit).offset(offset)
-        users = list(await self.session.scalars(query))
+        result = await self.session.scalars(query)
+        users = result.all()
         total = await self.session.scalar(select(func.count()).select_from(User))
         return users, total or 0
 

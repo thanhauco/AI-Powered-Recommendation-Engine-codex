@@ -33,3 +33,10 @@ class UserUpdate(APIModel):
 
 class UserRead(TimestampedModel, UserBase):
     id: uuid.UUID
+
+
+class UsersPage(APIModel):
+    items: List[UserRead]
+    total: int
+    page: int
+    page_size: int
