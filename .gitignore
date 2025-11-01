@@ -1,0 +1,102 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.project
+.pydevproject
+.settings/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.pytest_cache/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Application specific
+data/*.csv
+data/*.parquet
+data/*.json
+!data/catalog.csv
+logs/
+*.log
+.DS_Store
+
+# Database
+*.db
+*.sqlite3
+*.sqlite
+
+# Environment variables
+.env*
+!.env.example
+
+# Cache
+*.cache
+.cache/
+.ruff_cache/
+.mypy_cache/
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# ML models and data
+*.pkl
+*.joblib
+*.h5
+*.model
+ml/models/*
+ml/data/*
+!ml/models/.gitkeep
+!ml/data/.gitkeep
+
+# Documentation build
+docs/_build/
+site/
+
+# Alembic
+alembic/versions/*
+!alembic/versions/20250101_0001_initial_schema.py
